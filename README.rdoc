@@ -1,0 +1,23 @@
+== ValidatesPresenceOfAssociation
+
+
+The rails suggested thing to do is 
+
+	validates_presence_of :user_id
+
+instead of
+
+	validates_presence_of :user
+	
+But sometimes there are circular references in your models, and it's sometimes impossible to come up with a save order that allows all the validations like this to pass.
+
+so instead this plugin lets you
+
+	validates_presence_of_association :user
+	
+which causes a validation that at least one of :user_id and :user is set. (if one is set, no need to check the other)
+
+
+Copyright (c) 2008-2010 3M. All rights reserved. Released under the MIT license.
+
+Authored by Jacob Burkhart.
